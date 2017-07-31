@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ContactsController">
+
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#goHome" text="Main Menu" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Contacts">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="View Contacts" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Tournaments">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleTournamentsViewLoad" text="View Selected Tournament" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <right>
+        <VBox>
+            <Label text="Contacts">
+            <font>
+               <Font name="System Bold Italic" size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></Label>
+            <HBox>
+                <Label text="Search by LAST NAME:">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <padding>
+                  <Insets right="5.0" />
+               </padding></Label>
+                <TextField fx:id="searchTextField" onAction="#searchByLastName" onKeyPressed="#searchByLastName" prefHeight="25.0" prefWidth="268.0" />
+            <padding>
+               <Insets bottom="10.0" />
+            </padding>
+            </HBox>
+            <ListView fx:id="contactsListView" prefHeight="661.0" prefWidth="396.0" />
+        </VBox>
+
+    </right>
+   <left>
+        <GridPane hgap="10" prefHeight="651.0" prefWidth="500.0" vgap="10" BorderPane.alignment="CENTER">
+
+            <HBox prefHeight="25.0" prefWidth="219.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label prefHeight="17.0" prefWidth="124.0" text="Contact Menu">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Label>
+            </HBox>
+
+            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+            <Label text="First: " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="contactFName" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Label text="Middle: " GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="contactMName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Last: " GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="contactLName" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+
+            <Separator orientation="HORIZONTAL" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <Label text="Gender: " GridPane.columnIndex="0" GridPane.rowIndex="5">
+                <font>
+                    <Font name="System Bold Italic" size="12.0" />
+                </font></Label>
+            <HBox GridPane.columnIndex="1" GridPane.rowIndex="5">
+
+                <RadioButton fx:id="maleToggle" text="Male">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="genderGroup" />
+                    </toggleGroup></RadioButton>
+            </HBox>
+            <HBox GridPane.columnIndex="4" GridPane.rowIndex="5" />
+
+            <Label text="Birthdate: " GridPane.rowIndex="7">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+            <HBox GridPane.rowIndex="10">
+            <children>
+                   <Label prefHeight="17.0" prefWidth="134.0" text="Weight: ">
+                  <HBox.margin>
+                     <Insets top="5.0" />
+                  </HBox.margin>
+                  <padding>
+                     <Insets left="70.0" />
+                  </padding></Label>
+            </children>
+
+            </HBox>
+
+            <HBox GridPane.rowIndex="11">
+            <children>
+                   <Label text="Height: ">
+                  <padding>
+                     <Insets left="80.0" />
+                  </padding>
+                  <HBox.margin>
+                     <Insets top="5.0" />
+                  </HBox.margin></Label>
+            </children>
+            </HBox>
+
+            <HBox GridPane.rowIndex="12">
+                <Label alignment="CENTER_RIGHT" text="Email: ">
+               <padding>
+                  <Insets left="80.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+            </HBox>
+
+            <HBox GridPane.rowIndex="13">
+                <Label text="Telephone: ">
+               <padding>
+                  <Insets left="60.0" />
+               </padding></Label>
+            </HBox>
+
+            <VBox GridPane.rowIndex="14">
+                <Label text="Address: ">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <HBox />
+
+            </VBox>
+
+            <HBox GridPane.rowIndex="20" />
+             <Button onAction="#showNewContactDialog" prefHeight="25.0" prefWidth="95.0" text="Create Contact" GridPane.columnIndex="1" />
+             <TextField fx:id="yearField" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+             <RadioButton fx:id="femaleToggle" text="Female" toggleGroup="$genderGroup" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+             <Label prefHeight="17.0" prefWidth="47.0" text="Year: " GridPane.columnIndex="2" GridPane.rowIndex="8" />
+             <TextField fx:id="dayField" prefWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+             <Label text="Day: " GridPane.columnIndex="1" GridPane.rowIndex="8" />
+             <Label text="Month: " GridPane.rowIndex="8" />
+             <TextField fx:id="heightField" prefHeight="25.0" prefWidth="86.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+             <TextField fx:id="emailField" prefHeight="25.0" prefWidth="67.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
+             <TextField fx:id="phoneField" prefHeight="25.0" prefWidth="224.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+             <TextField fx:id="monthField" prefHeight="25.0" prefWidth="135.0" GridPane.rowIndex="9" />
+             <TextField fx:id="weightField" prefHeight="25.0" prefWidth="104.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+              <TextField fx:id="zipField" prefWidth="100" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+              <ComboBox fx:id="stateComboBox" prefHeight="25.0" prefWidth="62.0" GridPane.rowIndex="18">
+                  <items>
+                      <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="AL" />
+                          <String fx:value="AK" />
+                          <String fx:value="AZ" />
+                          <String fx:value="AR" />
+                          <String fx:value="CA" />
+                          <String fx:value="CO" />
+                          <String fx:value="CT" />
+                          <String fx:value="DE" />
+                          <String fx:value="FL" />
+                          <String fx:value="GA" />
+                          <String fx:value="HI" />
+                          <String fx:value="ID" />
+                          <String fx:value="IL" />
+                          <String fx:value="IN" />
+                          <String fx:value="IA" />
+                          <String fx:value="KS" />
+                          <String fx:value="KY" />
+                          <String fx:value="LA" />
+                          <String fx:value="ME" />
+                          <String fx:value="MD" />
+                          <String fx:value="MA" />
+                          <String fx:value="MI" />
+                          <String fx:value="MN" />
+                          <String fx:value="MS" />
+                          <String fx:value="MO" />
+                          <String fx:value="MT" />
+                          <String fx:value="NE" />
+                          <String fx:value="NV" />
+                          <String fx:value="NH" />
+                          <String fx:value="NJ" />
+                          <String fx:value="NM" />
+                          <String fx:value="NY" />
+                          <String fx:value="NC" />
+                          <String fx:value="ND" />
+                          <String fx:value="OH" />
+                          <String fx:value="OK" />
+                          <String fx:value="OR" />
+                          <String fx:value="PA" />
+                          <String fx:value="RI" />
+                          <String fx:value="SC" />
+                          <String fx:value="SD" />
+                          <String fx:value="TN" />
+                          <String fx:value="TX" />
+                          <String fx:value="UT" />
+                          <String fx:value="VT" />
+                          <String fx:value="VA" />
+                          <String fx:value="WA" />
+                          <String fx:value="WV" />
+                          <String fx:value="WI" />
+                          <String fx:value="WY" />
+                      </FXCollections>
+                  </items>
+                  <!--default value of the combo box-->
+                  <value>
+                      <String fx:value="CO" />
+                  </value>
+              </ComboBox>
+              <Label text="Zip: " GridPane.columnIndex="1" GridPane.rowIndex="17" />
+              <Label text="State: " GridPane.rowIndex="17" />
+             <Label text="City: " GridPane.columnIndex="2" GridPane.rowIndex="15" />
+             <TextField fx:id="cityField" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+             <TextField fx:id="streetField" GridPane.columnSpan="2" GridPane.rowIndex="16" />
+             <Label text="Street: " GridPane.rowIndex="15" />
+             <Button onAction="#editContact" text="Save Changes to Contact" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="20" GridPane.valignment="CENTER">
+            <GridPane.margin>
+               <Insets bottom="10.0" top="10.0" />
+            </GridPane.margin></Button>
+         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="19">
+            <children>
+               <Label text="Rank:">
+                  <HBox.margin>
+                     <Insets right="5.0" />
+                  </HBox.margin>
+               </Label>
+               <ComboBox fx:id="rankComboBox" prefHeight="25.0" prefWidth="123.0" />
+               <Label text="School:">
+                  <padding>
+                     <Insets left="10.0" />
+                  </padding>
+                  <HBox.margin>
+                     <Insets right="5.0" />
+                  </HBox.margin>
+               </Label>
+               <ComboBox fx:id="schoolComboBox" prefHeight="25.0" prefWidth="221.0" />
+            </children>
+         </HBox>
+         <columnConstraints>
+            <ColumnConstraints maxWidth="163.0" minWidth="124.0" prefWidth="124.0" />
+            <ColumnConstraints maxWidth="140.0" minWidth="101.0" prefWidth="140.0" />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints maxHeight="23.0" minHeight="22.0" prefHeight="23.0" />
+            <RowConstraints maxHeight="27.0" minHeight="13.0" prefHeight="13.0" />
+            <RowConstraints maxHeight="31.0" minHeight="11.0" prefHeight="31.0" />
+            <RowConstraints maxHeight="25.0" minHeight="5.0" prefHeight="5.0" />
+            <RowConstraints maxHeight="35.0" minHeight="18.0" prefHeight="18.0" />
+            <RowConstraints maxHeight="19.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="39.0" minHeight="19.0" prefHeight="19.0" />
+            <RowConstraints maxHeight="46.0" minHeight="5.0" prefHeight="18.0" />
+            <RowConstraints maxHeight="66.0" minHeight="0.0" prefHeight="27.0" />
+            <RowConstraints maxHeight="70.0" minHeight="1.0" prefHeight="27.0" />
+            <RowConstraints maxHeight="90.0" minHeight="30.0" prefHeight="31.0" />
+            <RowConstraints maxHeight="104.0" minHeight="30.0" prefHeight="33.0" />
+            <RowConstraints maxHeight="104.0" minHeight="19.0" prefHeight="23.0" />
+            <RowConstraints maxHeight="221.0" minHeight="18.0" prefHeight="28.0" />
+            <RowConstraints maxHeight="221.0" minHeight="17.0" prefHeight="17.0" />
+            <RowConstraints maxHeight="291.0" minHeight="23.0" prefHeight="29.0" />
+            <RowConstraints maxHeight="291.0" minHeight="11.0" prefHeight="22.0" />
+            <RowConstraints maxHeight="317.0" minHeight="24.0" prefHeight="25.0" />
+            <RowConstraints maxHeight="317.0" minHeight="24.0" prefHeight="25.0" />
+            <RowConstraints maxHeight="516.0" minHeight="19.0" prefHeight="47.0" />
+         </rowConstraints>
+         <BorderPane.margin>
+            <Insets left="40.0" top="10.0" />
+         </BorderPane.margin>
+
+
+
+
+
+
+        </GridPane>
+   </left>
+
+</BorderPane>

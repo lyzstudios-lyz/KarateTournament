@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane prefHeight="517.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ContactDialogController">
+    <!--header of the dialog box-->
+    <!--<headerText>-->
+    <!--Insert a contact, add its details, and set a date. Press 'Ok' when complete. Press 'Cancel' to cancel.-->
+    <!--</headerText>-->
+    <!--content of the dialog box-->
+    <content>
+
+            <GridPane hgap="10" prefWidth="300" vgap="10">
+
+                <Label fx:id="nameLabel" text="Name:" textFill="RED" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <Label fx:id="fNameLabel" text="First: " textFill="RED" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="contactFName" onKeyTyped="#ErrorCheck" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <Label text="Middle: " GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="contactMName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label fx:id="lNameLabel" text="Last: " textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <TextField fx:id="contactLName" onKeyTyped="#ErrorCheck" onMouseReleased="#ErrorCheck" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+
+                <Separator orientation="HORIZONTAL" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+                <HBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="5">
+                    <Label text="Gender: ">
+                        <font>
+                            <Font name="System Bold Italic" size="12.0" />
+                        </font></Label>
+                    <RadioButton fx:id="maleToggle" text="Male">
+               <toggleGroup>
+                  <ToggleGroup fx:id="genderGroup" />
+               </toggleGroup>
+               <padding>
+                  <Insets left="10.0" />
+               </padding></RadioButton>
+                    <RadioButton fx:id="femaleToggle" text="Female" toggleGroup="$genderGroup">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" />
+               </padding></RadioButton>
+                </HBox>
+
+                <Separator orientation="HORIZONTAL" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+
+                <Label text="Birthdate: " GridPane.columnIndex="0" GridPane.rowIndex="7">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <HBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="8">
+                    <Label text="Month: ">
+               <HBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </HBox.margin></Label>
+                    <TextField fx:id="monthField" prefWidth="30" />
+                    <Label text="Day: ">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </HBox.margin></Label>
+                    <TextField fx:id="dayField" prefWidth="30" />
+                    <Label text="Year: ">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </HBox.margin></Label>
+                    <TextField fx:id="yearField" prefWidth="60" />
+
+                </HBox>
+
+                <HBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="9">
+                    <Label text="Weight: ">
+                        <font>
+                            <Font name="System Bold Italic" size="12.0" />
+                        </font>
+               <HBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </HBox.margin></Label>
+                    <TextField fx:id="weightField" prefHeight="25.0" prefWidth="40.0" />
+                    <Label text="Height in inches:">
+                        <font>
+                            <Font name="System Bold Italic" size="12.0" />
+                        </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </HBox.margin></Label>
+                    <TextField fx:id="heightField" prefHeight="25.0" prefWidth="55.0" />
+                </HBox>
+
+                <HBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="10">
+                    <Label text="Email: ">
+                        <font>
+                            <Font name="System Bold Italic" size="12.0" />
+                        </font>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+                    <TextField fx:id="emailField" prefHeight="25.0" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin></TextField>
+                </HBox>
+
+                <HBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="11">
+                    <Label text="Telephone: ">
+                        <font>
+                            <Font name="System Bold Italic" size="12.0" />
+                        </font>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+                    <TextField fx:id="phoneField" />
+                </HBox>
+
+                <VBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="12">
+                    <Label text="Address: ">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+                    <Label text="Street: ">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Label>
+                    <TextField fx:id="streetField" />
+                    <Label text="City: ">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Label>
+                    <TextField fx:id="cityField" />
+                    <HBox>
+                        <Label text="State: ">
+                  <HBox.margin>
+                     <Insets right="10.0" top="15.0" />
+                  </HBox.margin></Label>
+                        <ComboBox fx:id="stateComboBox">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="AL" />
+                                    <String fx:value="AK" />
+                                    <String fx:value="AZ" />
+                                    <String fx:value="AR" />
+                                    <String fx:value="CA" />
+                                    <String fx:value="CO" />
+                                    <String fx:value="CT" />
+                                    <String fx:value="DE" />
+                                    <String fx:value="FL" />
+                                    <String fx:value="GA" />
+                                    <String fx:value="HI" />
+                                    <String fx:value="ID" />
+                                    <String fx:value="IL" />
+                                    <String fx:value="IN" />
+                                    <String fx:value="IA" />
+                                    <String fx:value="KS" />
+                                    <String fx:value="KY" />
+                                    <String fx:value="LA" />
+                                    <String fx:value="ME" />
+                                    <String fx:value="MD" />
+                                    <String fx:value="MA" />
+                                    <String fx:value="MI" />
+                                    <String fx:value="MN" />
+                                    <String fx:value="MS" />
+                                    <String fx:value="MO" />
+                                    <String fx:value="MT" />
+                                    <String fx:value="NE" />
+                                    <String fx:value="NV" />
+                                    <String fx:value="NH" />
+                                    <String fx:value="NJ" />
+                                    <String fx:value="NM" />
+                                    <String fx:value="NY" />
+                                    <String fx:value="NC" />
+                                    <String fx:value="ND" />
+                                    <String fx:value="OH" />
+                                    <String fx:value="OK" />
+                                    <String fx:value="OR" />
+                                    <String fx:value="PA" />
+                                    <String fx:value="RI" />
+                                    <String fx:value="SC" />
+                                    <String fx:value="SD" />
+                                    <String fx:value="TN" />
+                                    <String fx:value="TX" />
+                                    <String fx:value="UT" />
+                                    <String fx:value="VT" />
+                                    <String fx:value="VA" />
+                                    <String fx:value="WA" />
+                                    <String fx:value="WV" />
+                                    <String fx:value="WI" />
+                                    <String fx:value="WY" />
+                                </FXCollections>
+                            </items>
+                            <!--default value of the combo box-->
+                            <value>
+                                <String fx:value="CO" />
+                            </value>
+                  <HBox.margin>
+                     <Insets top="10.0" />
+                  </HBox.margin>
+                        </ComboBox>
+                        <Label text="Zip: ">
+                  <HBox.margin>
+                     <Insets left="10.0" top="15.0" />
+                  </HBox.margin></Label>
+                        <TextField fx:id="zipField" prefWidth="100">
+                  <HBox.margin>
+                     <Insets top="10.0" />
+                  </HBox.margin></TextField>
+
+                    </HBox>
+                    <HBox>
+                        <Label fx:id="rankLabel" alignment="CENTER" text="Rank" textAlignment="CENTER">
+                  <HBox.margin>
+                     <Insets right="10.0" top="15.0" />
+                  </HBox.margin></Label>
+               <ComboBox fx:id="rankComboBox" prefWidth="150.0">
+                  <HBox.margin>
+                     <Insets top="10.0" />
+                  </HBox.margin>
+               </ComboBox>
+                    </HBox>
+
+                </VBox>
+
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="20.0" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+
+            </GridPane>
+
+    </content>
+</DialogPane>

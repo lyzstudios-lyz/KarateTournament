@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" maxHeight="800.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TournamentController">
+    <top>
+
+        <VBox>
+            <MenuBar BorderPane.alignment="CENTER">
+                <menus>
+                    <Menu mnemonicParsing="false" text="File">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#goHome" text="Main Menu" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                        </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Contacts">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#handleContactsViewLoad" text="View Contacts" />
+                        </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Tournaments">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#handleTournamentsViewLoad" text="View Selected Tournament" />
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <HBox>
+                <TitledPane expanded="false" text="Top 5 Kyu belt Grand Champions: ">
+                    <VBox>
+                        <Label text="Some One" />
+                        <Label text="Some Two" />
+                        <Label text="Some Three" />
+                        <Label text="Some Four" />
+                        <Label text="Some Five" />
+                    </VBox>
+                </TitledPane>
+
+                <TitledPane expanded="false" text="Top 5 Black belt Grand Champions: ">
+                    <VBox>
+                        <Label text="Some One" />
+                        <Label text="Some Two" />
+                        <Label text="Some Three" />
+                        <Label text="Some Four" />
+                        <Label text="Some Five" />
+                    </VBox>
+                </TitledPane>
+
+                <TitledPane expanded="false" text="Kyu belt Grand Champion: ">
+                    <VBox>
+                        <Label text="Some One" />
+                    </VBox>
+                </TitledPane>
+
+                <TitledPane expanded="false" text="Black belt Grand Champion: ">
+                    <VBox>
+                        <Label text="Some One" />
+                    </VBox>
+                </TitledPane>
+            </HBox>
+        </VBox>
+
+
+
+    </top>
+    <center>
+        <GridPane>
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label fx:id="tournamentNameLabel" text="Tournament Name">
+                    <font>
+                        <Font name="System Bold" size="27.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                    </HBox.margin></Label>
+            </HBox>
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label text="Competitors:">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <TextField promptText="Search by Last Name" />
+                <ListView fx:id="competitorsListView" />
+            <Button fx:id="addCompetitorBTN" mnemonicParsing="false" onAction="#handleNewCompetitorViewLoad" prefHeight="25.0" prefWidth="249.0" text="Add Competitor" />
+            <GridPane.margin>
+               <Insets left="20.0" />
+            </GridPane.margin>
+            </VBox>
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </center>
+   <right>
+      <VBox prefHeight="750.0" prefWidth="504.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Competitor Name:" />
+            <Label fx:id="compName" text="FirstName LastName">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Competing in:">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding></Label>
+            <CheckBox fx:id="emptyBox" mnemonicParsing="false" text="Empty Hand Forms">
+
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </CheckBox>
+            <CheckBox fx:id="weaponsBox" mnemonicParsing="false" text="Weapons Forms">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </CheckBox>
+            <HBox prefHeight="73.0" prefWidth="504.0">
+               <children>
+                  <CheckBox fx:id="sparringBox" mnemonicParsing="false" text="Sparring / Kumite">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </CheckBox>
+               </children>
+            </HBox>
+            <TitledPane animated="false" collapsible="false" prefHeight="73.0" prefWidth="504.0" text="Empty Hand Forms Data">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="36.0" prefWidth="502.0">
+                           <children>
+                              <Label text="Score:">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding></Label>
+                              <TextField fx:id="emptyScore" prefHeight="25.0" prefWidth="50.0">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding></TextField>
+                              <Label text="Place:">
+                                 <padding>
+                                    <Insets left="10.0" right="10.0" />
+                                 </padding></Label>
+                              <TextField fx:id="emptyPlace" prefHeight="25.0" prefWidth="35.0">
+                                 <padding>
+                                    <Insets left="10.0" right="10.0" />
+                                 </padding></TextField>
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" text="Divsion name">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin></Button>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+
+
+
+
+            </TitledPane>
+            <TitledPane animated="false" collapsible="false" layoutX="10.0" layoutY="171.0" prefHeight="73.0" prefWidth="504.0" text="Weapons Forms Data">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="36.0" prefWidth="502.0">
+                           <children>
+                              <Label text="Score:">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></Label>
+                              <TextField fx:id="WeaponsScore" prefHeight="25.0" prefWidth="50.0">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></TextField>
+                              <Label text="Place:">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></Label>
+                              <TextField fx:id="WeaponsPlace" prefHeight="25.0" prefWidth="35.0">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></TextField>
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Divsion name" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" collapsible="false" layoutX="10.0" layoutY="244.0" prefHeight="73.0" prefWidth="504.0" text="Sparring / Kumite Data">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="36.0" prefWidth="502.0">
+                           <children>
+                              <Label text="Place:">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></Label>
+                              <TextField fx:id="SparringPlace" prefHeight="25.0" prefWidth="38.0">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></TextField>
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Divsion name" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <Label text="Grand Champion Score:" />
+            <Label fx:id="gcScoreLabel" text="12 gcp">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font></Label>
+            <Button mnemonicParsing="false" onAction="#editCompetitor" text="Save Competitor Info" />
+         </children></VBox>
+   </right>
+
+</BorderPane>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<DialogPane prefHeight="100.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TournamentDialogController">
+   <content>
+      <GridPane>
+          <Label text="Tournament Details: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+          <HBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label text="Host Name: " />
+              <TextField fx:id="hostField" />
+            <GridPane.margin>
+               <Insets top="5.0" />
+            </GridPane.margin>
+          </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <children>
+               <Label text="Date: ">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </Label>
+               <DatePicker fx:id="dateField" />
+            </children>
+            <GridPane.margin>
+               <Insets top="5.0" />
+            </GridPane.margin>
+         </HBox>
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+   </content>
+</DialogPane>
