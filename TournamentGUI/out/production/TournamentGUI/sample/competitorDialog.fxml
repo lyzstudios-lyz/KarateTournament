@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DialogPane?>
@@ -8,7 +9,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<DialogPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CompetitorDialogController">
+<DialogPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.CompetitorDialogController">
     <content>
 
         <GridPane hgap="10" vgap="10">
@@ -24,13 +26,16 @@
 
             </rowConstraints>
          <children>
-            <Label text="Contacts" />
-            <ComboBox fx:id="contactsDropDown" prefWidth="150.0" GridPane.rowIndex="1" />
+            <Label text="Contacts" GridPane.rowIndex="1">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding></Label>
+            <ComboBox fx:id="contactsDropDown" prefWidth="150.0" GridPane.rowIndex="2" />
 
-             <Label text="Competing in:" GridPane.rowIndex="2" />
-             <CheckBox fx:id="emptyCheckBox" prefHeight="0.0" prefWidth="122.0" text="Empty Hand Forms" GridPane.rowIndex="3" />
-             <CheckBox fx:id="weaponsCheckBox" prefHeight="0.0" prefWidth="107.0" text="Weapons Forms" GridPane.rowIndex="4" />
-             <CheckBox fx:id="sparringCheckBox" prefHeight="0.0" prefWidth="115.0" text="Sparring / Kumite" GridPane.rowIndex="5" />
+             <Label text="Competing in:" GridPane.rowIndex="3" />
+             <CheckBox fx:id="emptyCheckBox" prefHeight="0.0" prefWidth="122.0" text="Empty Hand Forms" GridPane.rowIndex="4" />
+             <CheckBox fx:id="weaponsCheckBox" prefHeight="0.0" prefWidth="107.0" text="Weapons Forms" GridPane.rowIndex="5" />
+             <CheckBox fx:id="sparringCheckBox" prefHeight="0.0" prefWidth="115.0" text="Sparring / Kumite" GridPane.rowIndex="6" />
              
 
          </children>

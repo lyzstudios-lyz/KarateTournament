@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" maxHeight="800.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TournamentController">
+<BorderPane fx:id="mainPane" maxHeight="800.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TournamentController">
     <top>
 
         <VBox>
@@ -44,9 +44,9 @@
                 </menus>
             </MenuBar>
             <HBox>
-                <TitledPane expanded="false" text="Top 5 Kyu belt Grand Champions: ">
+                <TitledPane fx:id="top5KyuList" expanded="false" text="Top 5 Kyu belt Grand Champions: ">
                     <VBox>
-                        <Label text="Some One" />
+                        <Label fx:id="top5Kyu1" text="Some One" />
                         <Label text="Some Two" />
                         <Label text="Some Three" />
                         <Label text="Some Four" />
@@ -66,7 +66,7 @@
 
                 <TitledPane expanded="false" text="Kyu belt Grand Champion: ">
                     <VBox>
-                        <Label text="Some One" />
+                        <Label fx:id="kyuGC" text="Some One" />
                     </VBox>
                 </TitledPane>
 
@@ -100,7 +100,8 @@
             <TextField promptText="Search by Last Name" />
                 <ListView fx:id="competitorsListView" />
             <Button fx:id="addCompetitorBTN" mnemonicParsing="false" onAction="#handleNewCompetitorViewLoad" prefHeight="25.0" prefWidth="249.0" text="Add Competitor" />
-            <GridPane.margin>
+
+                <GridPane.margin>
                <Insets left="20.0" />
             </GridPane.margin>
             </VBox>

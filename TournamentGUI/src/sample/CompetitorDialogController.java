@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import sun.security.ssl.Debug;
 
 /**
  * Copyright LyzStudios 2017.
@@ -31,10 +32,10 @@ public class CompetitorDialogController {
 
 
 		ObservableList<Person> contacts = TournamentAppData.getInstance().getContacts();
+		for(Person person : contacts){
+			System.out.println(person.getFullName());
+		}
 		contactsDropDown.setItems(contacts);
-
-
-
 	}
 
 

@@ -1,6 +1,7 @@
 package sample;
 
 import com.lyzstudios.tournamentapp.Competitor;
+import com.lyzstudios.tournamentapp.Rank;
 import com.lyzstudios.tournamentapp.TournamentAppData;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -14,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import sun.security.ssl.Debug;
 
 import java.io.IOException;
 import java.util.Comparator;
@@ -67,6 +69,11 @@ public class TournamentController {
 	@FXML
 	private  Label gcScoreLabel;
 
+	@FXML
+	private Label top5Kyu1;
+	@FXML
+	private Label kyuGC;
+
 
 
 	@FXML
@@ -84,11 +91,53 @@ public class TournamentController {
 					weaponsBox.setSelected(competitor.isInWeapons());
 					sparringBox.setSelected(competitor.isInSparring());
 
-					emptyScore.setText(String.valueOf(competitor.getFormsScore()));
-					emptyPlace.setText(String.valueOf(competitor.getFormsPlace()));
-					WeaponsScore.setText(String.valueOf(competitor.getWeaponsScore()));
-					WeaponsPlace.setText(String.valueOf(competitor.getWeaponsPlace()));
-					SparringPlace.setText(String.valueOf(competitor.getSparringPlace()));
+					emptyScore.setText("0");
+					emptyPlace.setText("0");
+					WeaponsScore.setText("0");
+					WeaponsPlace.setText("0");
+					SparringPlace.setText("0");
+
+
+
+					if(competitor.isInForms()){
+						if(emptyScore.isDisabled()){
+							emptyScore.setDisable(false);
+						}
+						if(emptyPlace.isDisabled()){
+							emptyPlace.setDisable(false);
+						}
+						emptyScore.setText(String.valueOf(competitor.getFormsScore()));
+						emptyPlace.setText(String.valueOf(competitor.getFormsPlace()));
+					} else {
+						emptyScore.setDisable(true);
+						emptyPlace.setDisable(true);
+					}
+
+
+					if(competitor.isInWeapons()){
+						if(WeaponsScore.isDisabled()){
+							WeaponsScore.setDisable(false);
+						}
+						if(WeaponsPlace.isDisabled()){
+							WeaponsPlace.setDisable(false);
+						}
+						WeaponsScore.setText(String.valueOf(competitor.getWeaponsScore()));
+						WeaponsPlace.setText(String.valueOf(competitor.getWeaponsPlace()));
+					} else {
+						WeaponsScore.setDisable(true);
+						WeaponsPlace.setDisable(true);
+					}
+
+					if(competitor.isInSparring()){
+						if(SparringPlace.isDisabled()){
+							SparringPlace.setDisable(false);
+						}
+						SparringPlace.setText(String.valueOf(competitor.getSparringPlace()));
+					} else {
+						SparringPlace.setDisable(true);
+					}
+
+
 					gcScoreLabel.setText(String.valueOf(competitor.getGcScore())+"gcp");
 				} catch(NullPointerException e) {
 					System.out.println("hiccup");
@@ -106,11 +155,19 @@ public class TournamentController {
 		boolean emptyHands = emptyBox.isSelected();
 		boolean weapons = weaponsBox.isSelected();
 		boolean sparring = sparringBox.isSelected();
-		float emptyScoreF = Float.valueOf(emptyScore.getText());
-		float weaponsScoreF = Float.valueOf(WeaponsScore.getText());
-		int emptyPlaceI = Integer.valueOf(emptyPlace.getText());
-		int weaponsPlaceI = Integer.valueOf(WeaponsPlace.getText());
-		int sparringPlaceI = Integer.valueOf(SparringPlace.getText());
+		float emptyScoreF;
+		float weaponsScoreF;
+		int emptyPlaceI;
+		int weaponsPlaceI;
+		int sparringPlaceI;
+
+		// run a check to ensure that the text fields were not disabled due to competitor not competing in event
+		if(!emptyScore.isDisabled()){emptyScoreF = Float.valueOf(emptyScore.getText());} else {emptyScoreF=0;}
+		if(!WeaponsScore.isDisabled()){weaponsScoreF = Float.valueOf(WeaponsScore.getText());} else {weaponsScoreF=0;}
+		if(!emptyPlace.isDisabled()){emptyPlaceI = Integer.valueOf(emptyPlace.getText());} else {emptyPlaceI=0;}
+		if(!WeaponsPlace.isDisabled()){weaponsPlaceI = Integer.valueOf(WeaponsPlace.getText());} else {weaponsPlaceI=0;}
+		if(!SparringPlace.isDisabled()){sparringPlaceI = Integer.valueOf(SparringPlace.getText());} else {sparringPlaceI=0;}
+
 
 
 
@@ -145,7 +202,7 @@ public class TournamentController {
 		}
 
 		handleListView();
-
+		handleGCDisplay();
 	}
 
 
@@ -162,6 +219,38 @@ public class TournamentController {
 		} catch (IOException e){
 			e.printStackTrace();
 		}
+	}
+
+	@FXML
+	public void handleGCDisplay(){
+		System.out.println("GC Display running........ >>>>>>>>>");
+		Competitor topKyuComp = null;
+		if(!TournamentAppData.getInstance().getCurrentTournament().getCompetitors().isEmpty()){
+			System.out.println("It is not empty");
+			for (Competitor comp:TournamentAppData.getInstance().getCurrentTournament().getCompetitors()
+				 ) {
+				if(comp.getRank() != Rank.BLACK){
+					System.out.println("Comp not black");
+					if(topKyuComp == null){
+						System.out.println("it is null");
+						topKyuComp = comp;
+					} else {
+						if(comp.getGcScore() > topKyuComp.getGcScore()){
+							System.out.println("greater than score");
+							topKyuComp = comp;
+						}
+					}
+				}
+
+			}
+		}
+
+		if(topKyuComp != null){
+
+			kyuGC.setText(topKyuComp.getFullName() + " - "+topKyuComp.getGcScore()+" GCP");
+		}
+		//TODO gc calculation not working when competitor place is the same in multiple events
+
 	}
 
 	@FXML
@@ -225,6 +314,8 @@ public class TournamentController {
 		competitorsListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
 		competitorsListView.getSelectionModel().selectFirst();
+
+		handleGCDisplay(); /////////////////////////////////////////////////////////////////////////
 	}
 
 
